@@ -1,0 +1,123 @@
+.events {
+	min-height: fit-content;
+	padding-bottom: 3rem;
+}
+
+#this-month,
+#upcoming,
+#past {
+	font-size: 2.4rem;
+	text-transform: uppercase;
+	padding-left: 46px;
+}
+
+#this-month-events,
+#upcoming-events,
+#past-events {
+	width: 98%;
+	padding-left: 8px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(430px, 430px));
+	gap: 24px;
+	justify-content: center;
+}
+
+
+.event-card {
+	width: 380px;
+	min-height: 260px;
+	border: var(--text) 2px solid;
+	padding: 22px;
+	position: relative;
+}
+
+.event-community {
+	background: #242424;
+	color: var(--primary);
+	font-size: 1.2rem;
+	width: fit-content;
+	padding: 3px 12px;
+	margin-top: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 80%;
+	border-left: var(--primary) 2px solid;
+}
+
+.event-title {
+	font-size: 1.7rem;
+	margin-top: 12px;
+	color: var(--primary);
+	max-width: 380px;
+	overflow-wrap: break-word;
+}
+
+.event-date {
+	background: #acff2f28;
+	/* background: #ff2f2f28; */
+	padding: 3px 6px;
+	width: fit-content;
+	font-size: 1.2rem;
+	font-style: bold;
+	/* border: #ff2f2f 1px solid; */
+	/* border: var(--primary) 1px solid; */
+	/* color:var(--primary) */
+}
+
+.event-time {
+	background: #272727;
+	padding: 3px 6px;
+	width: fit-content;
+	font-size: 1.2rem;
+	font-style: bold;
+}
+
+.add-to-cal-btn {
+	height: fit-content;
+	position: absolute;
+	padding: 8px 18px;
+	background-color: var(--bg);
+	color: var(--text);
+	border: 2px var(--text) solid;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-style: bold;
+	font-size: 1rem;
+	right: -2px;
+	bottom: -2px;
+
+}
+
+.location {
+	font-size: 1.2rem;
+	display: -webkit-box;
+	line-clamp: 4;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.add-to-cal-btn:hover {
+	border-color: var(--primary);
+	border-style: solid;
+	color: var(--primary);
+}
+
+@media (width<512px) {
+	.event-card {
+		width: 80%;
+	}
+
+	#this-month-events,
+	#upcoming-events,
+	#past-events {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		flex-direction: column;
+		padding: 0;
+	}
+}
