@@ -4,6 +4,7 @@ let upcoming_events_section = document.getElementById("upcoming-events");
 let past_events_section = document.getElementById("past-events");
 
 // template string
+// used for rendering cards in a react component style
 // ( it will be used replace the place holders {{...}} with actual data)
 const template = `<div class="event-card">
 					<p class="event-community">{{community-name}}</p>
@@ -11,45 +12,36 @@ const template = `<div class="event-card">
 					<div class="event-info">
 						<p class="event-date">{{event-date}}</p>
 						<p class="event-time">{{event-time}}</p>
-						<a href='{{event-url}}'><button class="add-to-cal-btn">Register</button></a>
+						<a href='{{event-url}}'><button class="register-btn">Register</button></a>
 					</div>
 					<p class="location">{{event-location}}</p>
 				</div>`
 
-// this function gets the fetched results and checks wether it is array or not
-async function fetchData(url) {
-	try {
-		const response = await fetch(url);
+// template for past event cards, this one has custom classname and dont have the register button
+const past_events_template = `<div class="past event-card">
+					<p class="past event-community">{{community-name}}</p>
+					<h1 class="past event-title">{{event-title}}</h1>
+					<div class="past event-info">
+						<p class="past event-date">{{event-date}}</p>
+						<p class="past event-time">{{event-time}}</p>
+					</div>
+					<p class="past location">{{event-location}}</p>
+				</div>`
 
-		if (!response.ok) {
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
 
-		const data = await response.json();
-
-		// Ensure the response is an array, or convert it to one
-		if (Array.isArray(data)) {
-			return data;
-		} else if (typeof data === 'object') {
-			return Object.values(data);
-		} else {
-			throw new Error("Unexpected JSON format");
-		}
-	} catch (error) {
-		console.error("Error fetching JSON data:", error);
-		return [];
-	}
-}
-
-// this gets the array of data splits it into three parts
-// this_month, upcoming, past_events
-// and then renders them accordingly
 let events = [];
 async function run() {
-	events = await fetchData('https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/events.json');
-	console.log(events);
 
-	let past_events = [];
+	// fetch events.json directly from github repo of tamilnadu.tech
+	const response = await fetch('https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/events.json');
+	events = await response.json();
+	
+	console.log(events);
+	
+	// this fetches past events from a different json
+	const past_events_response = await fetch('https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/pastevents.json');
+	let past_events = await past_events_response.json();
+	
 	let this_month = [];
 	let upcoming = [];
 
@@ -66,8 +58,24 @@ async function run() {
 		else {
 			past_events.push(event)
 		}
+
 	});
 
+	this_month = this_month.sort((a,b)=>{
+		const A = new Date(`${a.eventDate}`);
+		const B = new Date(`${b.eventDate}`);
+		return A - B;
+	})
+	upcoming = upcoming.sort((a,b)=>{
+		const A = new Date(`${a.eventDate}`);
+		const B = new Date(`${b.eventDate}`);
+		return A - B;
+	})
+	past_events = past_events.slice(-6).sort((a,b)=>{
+		const A = new Date(`${a.eventDate}`);
+		const B = new Date(`${b.eventDate}`);
+		return B - A;
+	})
 	// debugging purpose
 	// console.log(this_month)
 	// console.log(upcoming)
@@ -80,13 +88,13 @@ async function run() {
 		this_month.map(({ communityName, eventName, eventVenue, eventDate, eventTime, eventLink }) => {
 			rendered += template.replace("{{community-name}}", communityName)     // replace fields of template string with date
 				.replace("{{event-title}}", eventName)
-				.replace("{{event-date}}", eventDate)
+				.replace("{{event-date}}", eventDate.split('-').reverse().join('-'))
 				.replace("{{event-time}}", eventTime)
 				.replace("{{event-location}}", eventVenue)
 				.replace("{{event-url}}", eventLink);
 		})
 	}
-
+	// renders this month events
 	this_month_events_section.innerHTML = rendered;
 
 	// repeat two more times
@@ -97,13 +105,13 @@ async function run() {
 		upcoming.map(({ communityName, eventName, eventVenue, eventDate, eventTime, eventLink }) => {
 			rendered += template.replace("{{community-name}}", communityName)
 				.replace("{{event-title}}", eventName)
-				.replace("{{event-date}}", eventDate)
+				.replace("{{event-date}}", eventDate.split('-').reverse().join('-'))
 				.replace("{{event-time}}", eventTime)
 				.replace("{{event-location}}", eventVenue)
 				.replace("{{event-url}}", eventLink);
 		})
 	}
-
+	// renders upcoming events
 	upcoming_events_section.innerHTML = rendered;
 
 	rendered = '';
@@ -111,16 +119,17 @@ async function run() {
 		rendered = "<h1>Memory Corrupt! No history available</h1>";
 	} else {
 		past_events.map(({ communityName, eventName, eventVenue, eventDate, eventTime, eventLink }) => {
-			rendered += template.replace("{{community-name}}", communityName)
+			rendered += past_events_template.replace("{{community-name}}", communityName)
 				.replace("{{event-title}}", eventName)
-				.replace("{{event-date}}", eventDate)
+				.replace("{{event-date}}", eventDate.split('-').reverse().join('-'))
 				.replace("{{event-time}}", eventTime)
 				.replace("{{event-location}}", eventVenue)
-				.replace("{{event-url}}", eventLink);
+				// no event-url here
 		})
 	}
-
+	// renders past events
 	past_events_section.innerHTML = rendered;
+	
 }
 
 run();    // initiate fetching and rendering

@@ -2,7 +2,7 @@
 	--primary: #adff2f;
 	--secondary: #628723;
 	--foreground: #ede8e8;
-	--background: #171717;
+	--background: #0f0f0f;
 	--fg: var(--foreground);
 	--bg: var(--background);
 	--text: var(--foreground);
@@ -10,7 +10,7 @@
 }
 
 * {
-	font-family: 'Monaspace Neon Var',monospace;
+	font-family: 'Monaspace Neon Var';
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 	padding: 0;
 	background: var(--bg);
 	color: var(--text);
-	font-family: 'Monaspace Neon Var',monospace;
+	font-family: 'Monaspace Neon Var';
 }
 
 #navbar {
@@ -63,46 +63,18 @@ body {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: 100vh;
+	height: fit-content;
 }
-
-#left-side {
-	width: calc(50% - 5rem);
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: start;
-	padding-left: 5rem;
-	flex-direction: column;
-}
-
-#thirukkural {
-	position: absolute;
-	margin: 0;
-	font-family: "Noto Serif Tamil", serif;
-	font-style: italic;
-	font-size: 1.5rem;
-}
-
-#right-side {
-	position: relative;
-	width: 50%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	stroke: white;
-	padding-right: 20px;
-}
-
 .section {
 	width: 100%;
-	min-height: 100vh;
+	min-height: fit-content;
 }
 
 #hero-title {
 	font-size: 4.6rem;
-	margin-top: 0;
+	height: fit-content;
+	width: 100%;
+	text-align: center;
 }
 
 #community-page-btn {
@@ -123,54 +95,15 @@ body {
 	color: var(--primary);
 }
 
-@media (width<1175px) {
-	#hero-img {
-		display: none;
-		position: static;
-	}
-
-	#thirukkural {
-		top: 0;
-		width: calc(100% - 40px);
-		font-size: 1.4rem;
-		padding: 45px 20px 0 20px;
-		max-width: 450px;
-	}
-
-	#right-side {
-		position: absolute;
-		width: 100%;
-		height: fit-content;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	#left-side {
-		width: 100%;
-		padding-left: 3rem;
-	}
-
-	#hero-title {
-		max-width: 900px;
-	}
-}
-
 @media (width<530px) {
-	#thirukkural {
-		font-size: 1rem;
-	}
-
 	#navbar {
 		padding: 0 22px;
 		width: calc(100% - 44px);
 	}
 }
 
-@media (width<700px) {
-	#left-side {
-		padding-left: 1.5rem;
+@media (width<865px) {
+	#hero-title {
+		font-size: 2.3rem;
 	}
 }
