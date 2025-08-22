@@ -134,7 +134,7 @@ async function run() {
   upcoming_events_section.innerHTML = rendered;
 
   past_events = past_events
-    .slice(window.innerWidth >= 1829 ? -8 : -6)
+    .slice(-6)
     .sort((a, b) => {
       const A = new Date(`${a.eventDate}`);
       const B = new Date(`${b.eventDate}`);
