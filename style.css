@@ -21,6 +21,15 @@ body {
     font-family: "Monaspace Neon Var", monospace;
 }
 
+a {
+    text-decoration: none;
+    color: var(--text);
+}
+a:visited {
+    color: var(--text);
+    text-decoration: none;
+}
+
 #navbar {
     display: flex;
     flex-direction: row;
@@ -33,14 +42,18 @@ body {
     position: fixed;
     border-bottom: var(--disabled) 1px dashed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 #navtitle {
     font-size: 1.4rem;
 }
 
-#navgitbtn {
+#navigation-box {
+    display: none;
+}
+
+button {
     height: fit-content;
     padding: 8px 18px;
     background-color: var(--bg);
@@ -48,11 +61,10 @@ body {
     border: var(--text) 2px solid;
     cursor: pointer;
     text-transform: uppercase;
-    font-style: bold;
     font-size: 1rem;
 }
 
-#navgitbtn:hover {
+button:hover {
     border-color: var(--primary);
     border-style: solid;
     color: var(--primary);
@@ -98,29 +110,12 @@ body {
 .section {
     width: 100%;
     min-height: 100vh;
+    border-bottom: var(--secondary) 2px dashed;
 }
 
 #hero-title {
     font-size: 3.6rem;
     margin-top: 0;
-}
-
-#community-page-btn {
-    height: fit-content;
-    padding: 8px 18px;
-    background-color: var(--bg);
-    color: var(--text);
-    border: var(--text) 2px solid;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-style: bold;
-    font-size: 1rem;
-}
-
-#community-page-btn:hover {
-    border-color: var(--primary);
-    border-style: solid;
-    color: var(--primary);
 }
 
 @media (width<1175px) {
@@ -186,5 +181,23 @@ body {
 @media (width<700px) {
     #left-side {
         padding-left: 1.5rem;
+    }
+    #navigation-box{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        top:96vh;
+        position: sticky;
+        justify-content: space-around;
+        background: var(--bg);
+        z-index: 4;
+        height: 4vh;
+        align-items: center;
+        margin: 0;
+        border-top: var(--text) 2px inset;
+    }
+    #navigation-this-month:hover,
+    #navigation-upcoming:hover{
+        color: var(--primary);
     }
 }

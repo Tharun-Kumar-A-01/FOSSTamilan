@@ -6,16 +6,16 @@ let past_events_section = document.getElementById("past-events");
 // template string
 // used for rendering cards in a react component style
 // ( it will be used replace the place holders {{...}} with actual data)
-const template = `<div class="event-card">
+const template = `<a href='{{event-url}}' class="event-card">
 					<p class="event-community">{{community-name}}</p>
 					<h1 class="event-title">{{event-title}}</h1>
 					<div class="event-info">
 						<p class="event-date">{{event-date}}</p>
 						<p class="event-time">{{event-time}}</p>
-						<a href='{{event-url}}'><button class="register-btn">Register</button></a>
+						<button class="register-btn">Register</button>
 					</div>
 					<p class="location">{{event-location}}</p>
-				</div>`;
+				</a>`;
 
 // template for past event cards, this one has custom classname and dont have the register button
 const past_events_template = `<div class="past event-card">
