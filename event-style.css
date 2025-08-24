@@ -9,13 +9,14 @@
 #past {
     font-size: 2.4rem;
     text-transform: uppercase;
-    padding-top: 80px;
     padding-left: 46px;
+    padding-top: 80px;
 }
 
 #this-month-events,
 #upcoming-events,
 #past-events {
+    padding-bottom: 80px;
     max-width: 1495px;
     width: 88%;
     padding-left: 5%;
@@ -25,6 +26,11 @@
     justify-content: start;
 }
 
+#this-month-events-section,
+#upcoming-events-section {
+    border-bottom: var(--secondary) 2px dashed;
+}
+
 .event-card {
     width: 380px;
     min-height: 260px;
@@ -32,9 +38,11 @@
     padding: 22px;
     position: relative;
 }
+
 .event-card:hover {
     border-color: var(--primary);
 }
+
 .event-community {
     background: #242424;
     color: var(--primary);
@@ -54,7 +62,6 @@
     margin-top: 12px;
     color: var(--primary);
     max-width: 380px;
-    overflow-wrap: break-word;
 }
 
 .event-date {
@@ -92,9 +99,11 @@
     text-overflow: ellipsis;
     margin: 0 0 20px;
 }
+
 .past.location {
     margin-bottom: 0;
 }
+
 #past-events-gradient {
     position: absolute;
     width: 100%;
@@ -108,15 +117,18 @@
 }
 
 @media (width<903px) {
+
     #past-events-gradient {
         height: 25%;
     }
+
     #past-events > .event-card:last-of-type {
         display: none;
     }
 }
 
 @media (width<512px) {
+
     .event-card {
         width: 80%;
     }

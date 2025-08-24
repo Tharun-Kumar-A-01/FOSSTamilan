@@ -25,6 +25,7 @@ a {
     text-decoration: none;
     color: var(--text);
 }
+
 a:visited {
     color: var(--text);
     text-decoration: none;
@@ -110,7 +111,6 @@ button:hover {
 .section {
     width: 100%;
     min-height: 100vh;
-    border-bottom: var(--secondary) 2px dashed;
 }
 
 #hero-title {
@@ -119,6 +119,7 @@ button:hover {
 }
 
 @media (width<1175px) {
+
     #hero-img {
         display: none;
         position: static;
@@ -154,20 +155,24 @@ button:hover {
 }
 
 @media (height<675px) {
+
     #hero-img {
         height: auto;
         max-height: 90vh;
         padding-top: 0;
     }
+
     #right-side {
         align-items: start;
     }
+
     #thirukkural {
         align-self: center;
     }
 }
 
 @media (width<530px) {
+
     #thirukkural {
         font-size: 1rem;
     }
@@ -179,10 +184,12 @@ button:hover {
 }
 
 @media (width<700px) {
+
     #left-side {
         padding-left: 1.5rem;
     }
-    #navigation-box{
+
+    #navigation-box {
         display: flex;
         flex-direction: row;
         width: 100%;
@@ -196,8 +203,9 @@ button:hover {
         margin: 0;
         border-top: var(--text) 2px inset;
     }
+
     #navigation-this-month:hover,
-    #navigation-upcoming:hover{
+    #navigation-upcoming:hover {
         color: var(--primary);
     }
 }

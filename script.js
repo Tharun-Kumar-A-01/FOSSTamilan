@@ -5,19 +5,18 @@ let past_events_section = document.getElementById("past-events");
 
 // template string
 // used for rendering cards in a react component style
-// ( it will be used replace the place holders {{...}} with actual data)
+// ( it will be used replace the placeholders {{...}} with actual data)
 const template = `<a href='{{event-url}}' class="event-card">
 					<p class="event-community">{{community-name}}</p>
 					<h1 class="event-title">{{event-title}}</h1>
 					<div class="event-info">
 						<p class="event-date">{{event-date}}</p>
 						<p class="event-time">{{event-time}}</p>
-						<button class="register-btn">Register</button>
 					</div>
 					<p class="location">{{event-location}}</p>
 				</a>`;
 
-// template for past event cards, this one has custom classname and dont have the register button
+// template for past event cards, this one has custom classname and don't have the register button
 const past_events_template = `<div class="past event-card">
 					<p class="past event-community">{{community-name}}</p>
 					<h1 class="past event-title">{{event-title}}</h1>
@@ -30,7 +29,8 @@ const past_events_template = `<div class="past event-card">
 
 let events = [];
 async function run() {
-  // fetch events.json directly from github repo of tamilnadu.tech
+
+    // fetch events.json directly from github repo of tamilnadu.tech
   const response = await fetch(
     "https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/events.json",
   );
@@ -49,17 +49,17 @@ async function run() {
 
   // group each event object by date
   events.forEach((event) => {
-    eventDate = new Date(event.eventDate);
-    today = new Date();
+      let eventDate = new Date(event.eventDate);
+    let today = new Date();
     if (
       eventDate.getMonth() === today.getMonth() &&
       eventDate.getDate() >= today.getDate() &&
-      eventDate.getYear() >= today.getYear()
+      eventDate.getFullYear() >= today.getFullYear()
     ) {
       this_month.push(event);
     } else if (
       eventDate.getMonth() > today.getMonth() &&
-      eventDate.getYear() >= today.getYear()
+      eventDate.getFullYear() >= today.getFullYear()
     ) {
       upcoming.push(event);
     } else {
@@ -75,7 +75,7 @@ async function run() {
   });
 
   let rendered = "";
-  if (this_month.length == 0) {
+  if (this_month.length === 0) {
     rendered = "<h1>No events known this month</h1>"; // fallback message
   } else {
     this_month.map(
@@ -108,7 +108,7 @@ async function run() {
   });
 
   rendered = "";
-  if (upcoming.length == 0) {
+  if (upcoming.length === 0) {
     rendered = "<h1>No events known to be coming up</h1>";
   } else {
     upcoming.map(
@@ -141,7 +141,7 @@ async function run() {
       return B - A;
     });
   rendered = "";
-  if (past_events.length == 0) {
+  if (past_events.length === 0) {
     rendered = "<h1>Memory Corrupt! No history available</h1>";
   } else {
     past_events.map(
@@ -151,7 +151,6 @@ async function run() {
         eventVenue,
         eventDate,
         eventTime,
-        eventLink,
       }) => {
         rendered += past_events_template
           .replace("{{community-name}}", communityName)
@@ -167,4 +166,4 @@ async function run() {
   past_events_section.innerHTML = rendered;
 }
 
-run(); // initiate fetching and rendering
+run().then(); // initiate fetching and rendering
