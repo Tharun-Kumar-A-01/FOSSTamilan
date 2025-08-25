@@ -7,24 +7,24 @@ let past_events_section = document.getElementById("past-events");
 // used for rendering cards in a react component style
 // ( it will be used replace the placeholders {{...}} with actual data)
 const template = `<a href='{{event-url}}' class="event-card">
-					<p class="event-community">{{community-name}}</p>
+					<p class="event-community" title='{{community-name}}'>{{community-name}}</p>
 					<h1 class="event-title">{{event-title}}</h1>
 					<div class="event-info">
 						<p class="event-date">{{event-date}}</p>
 						<p class="event-time">{{event-time}}</p>
 					</div>
-					<p class="location">{{event-location}}</p>
+					<p class="location" title='{{event-location}}'>{{event-location}}</p>
 				</a>`;
 
 // template for past event cards, this one has custom classname and don't have the register button
 const past_events_template = `<div class="past event-card">
-					<p class="past event-community">{{community-name}}</p>
+					<p class="past event-community" title='{{community-name}}'>{{community-name}}</p>
 					<h1 class="past event-title">{{event-title}}</h1>
 					<div class="past event-info">
 						<p class="past event-date">{{event-date}}</p>
 						<p class="past event-time">{{event-time}}</p>
 					</div>
-					<p class="past location">{{event-location}}</p>
+					<p class="past location" title='{{event-location}}'>{{event-location}}</p>
 				</div>`;
 
 let events = [];
@@ -88,11 +88,11 @@ async function run() {
         eventLink,
       }) => {
         rendered += template
-          .replace("{{community-name}}", communityName) // replace fields of template string with data
+          .replaceAll("{{community-name}}", communityName) // replace fields of template string with data
           .replace("{{event-title}}", eventName)
           .replace("{{event-date}}", eventDate.split("-").reverse().join("-"))
           .replace("{{event-time}}", eventTime)
-          .replace("{{event-location}}", eventVenue)
+          .replaceAll("{{event-location}}", eventVenue)   // replaceAll for replacing the string within the title attr.
           .replace("{{event-url}}", eventLink);
       },
     );
@@ -121,11 +121,11 @@ async function run() {
         eventLink,
       }) => {
         rendered += template
-          .replace("{{community-name}}", communityName)
+          .replaceAll("{{community-name}}", communityName)
           .replace("{{event-title}}", eventName)
           .replace("{{event-date}}", eventDate.split("-").reverse().join("-"))
           .replace("{{event-time}}", eventTime)
-          .replace("{{event-location}}", eventVenue)
+          .replaceAll("{{event-location}}", eventVenue)
           .replace("{{event-url}}", eventLink);
       },
     );
@@ -153,11 +153,11 @@ async function run() {
         eventTime,
       }) => {
         rendered += past_events_template
-          .replace("{{community-name}}", communityName)
+          .replaceAll("{{community-name}}", communityName)
           .replace("{{event-title}}", eventName)
           .replace("{{event-date}}", eventDate.split("-").reverse().join("-"))
           .replace("{{event-time}}", eventTime)
-          .replace("{{event-location}}", eventVenue);
+          .replaceAll("{{event-location}}", eventVenue);
         // no event-url here
       },
     );

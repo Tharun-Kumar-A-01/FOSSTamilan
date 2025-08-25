@@ -43,7 +43,7 @@ a:visited {
     position: fixed;
     border-bottom: var(--disabled) 1px dashed;
     top: 0;
-    z-index: 2;
+    z-index: 3;
 }
 
 #navtitle {
@@ -93,7 +93,7 @@ button:hover {
     position: absolute;
     margin: 0;
     font-family: "Noto Serif Tamil", serif;
-    font-style: italic;
+    /*font-style: italic;*/
     font-size: 1.5rem;
 }
 
@@ -193,15 +193,16 @@ button:hover {
         display: flex;
         flex-direction: row;
         width: 100%;
-        top:96vh;
+        top:65px;
         position: sticky;
         justify-content: space-around;
         background: var(--bg);
-        z-index: 4;
+        z-index: 2;
         height: 4vh;
         align-items: center;
         margin: 0;
-        border-top: var(--text) 2px inset;
+        border-bottom: var(--text) 2px inset;
+        box-shadow: #0f0f0f 0 0 20px 7px;
     }
 
     #navigation-this-month:hover,
