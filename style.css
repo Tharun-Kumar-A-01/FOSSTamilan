@@ -10,7 +10,7 @@
 }
 
 * {
-    font-family: "Monaspace Neon Var", monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     padding: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: "Monaspace Neon Var", monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 
 a {

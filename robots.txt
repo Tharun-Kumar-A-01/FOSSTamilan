@@ -1,4 +1,2 @@
 User-agent:*
 Disallow:
-
-Sitemap: https://tharun-kumar-a-01.github.io/FOSSTamilan/sitemap.xml

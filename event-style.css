@@ -43,6 +43,12 @@
     border-color: var(--primary);
 }
 
+#external-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
 .event-community {
     background: #242424;
     color: var(--primary);
@@ -70,6 +76,8 @@
     padding: 3px 6px;
     width: fit-content;
     font-size: 1.2rem;
+	display: flex;
+	align-items: center;
     /* border: #ff2f2f 1px solid; */
     /* border: var(--primary) 1px solid; */
     /* color:var(--primary) */
@@ -80,12 +88,30 @@
     padding: 3px 6px;
     width: fit-content;
     font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+}
+
+#date-icon,
+#time-icon {
+	flex-shrink: 0;
+	padding-right: 12px;
 }
 
 .register-btn {
     position: absolute;
     right: -2px;
     bottom: -2px;
+}
+
+#location-info {
+	display: flex;
+}
+
+#location-icon {
+	flex-shrink: 0;
+	padding-right: 12px;
+	padding-left: 6px;
 }
 
 .location {
@@ -107,7 +133,7 @@
 #past-events-gradient {
     position: absolute;
     width: 100%;
-    height: 45%;
+    height: 25%;
     background: linear-gradient(transparent 0%, var(--bg) 60%, var(--bg) 100%);
     z-index: 1;
     bottom: 0;
@@ -122,9 +148,6 @@
         height: 25%;
     }
 
-    #past-events > .event-card:last-of-type {
-        display: none;
-    }
 }
 
 @media (width<512px) {
