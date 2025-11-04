@@ -2,10 +2,11 @@
     min-height: fit-content;
     padding-bottom: 3rem;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#this-month,
-#upcoming,
 #past {
     font-size: 2.4rem;
     text-transform: uppercase;
@@ -13,22 +14,13 @@
     padding-top: 80px;
 }
 
-#this-month-events,
-#upcoming-events,
 #past-events {
-    padding-bottom: 80px;
     max-width: 1495px;
     width: 88%;
-    padding-left: 5%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(430px, 430px));
     gap: 24px;
-    justify-content: start;
-}
-
-#this-month-events-section,
-#upcoming-events-section {
-    border-bottom: var(--secondary) 2px dashed;
+    justify-content: center;
 }
 
 .event-card {
@@ -142,8 +134,6 @@
         width: 80%;
     }
 
-    #this-month-events,
-    #upcoming-events,
     #past-events {
         display: flex;
         justify-content: center;

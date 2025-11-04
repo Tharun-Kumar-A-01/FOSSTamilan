@@ -1,7 +1,7 @@
 :root {
     --primary: #adff2f;
     --secondary: #628723;
-    --foreground: #ede8e8;
+    --foreground: #e2e2e2;
     --background: #0f0f0f;
     --fg: var(--foreground);
     --bg: var(--background);
