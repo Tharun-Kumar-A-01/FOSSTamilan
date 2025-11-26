@@ -1,5 +1,6 @@
 let communities_section = document.getElementById("communities-container");
 
+// template for each community card
 const template = `
 				<div class="community-card">
 					<div class="img-and-location">
@@ -15,6 +16,7 @@ const template = `
 					</div>
 				</div>`;
 
+// template for each links in the card
 const link_template = `
 						<a class="link-box" href="{{link-url}}">
 							<img src="{{svg-src}}" alt="{{website}}">
@@ -23,33 +25,30 @@ const link_template = `
 let communities = [];
 async function run() {
 
-	// fetch events.json directly from github repo of tamilnadu.tech
+	// fetch communities.json directly from github repo of tamilnadu.tech
 	const response = await fetch("https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/communities.json");
 	communities = await response.json();
 	
-	console.log(communities);
+	// console.log(communities);
+
 	let rendered = "";
 	if (communities.length === 0) {
 		rendered = "<h1>Unable to Fetch Communities</h1>"; // fallback message
 	} else {
 		communities.map(({name, logo, location, website, twitter, discord, instagram, linkedin, mastadon, reddit, bluesky, github, telegram, youtube}) => {
 			
+			// this will hold the html string for each links as icons
 			let links = "";
-			
-			twitter ? links += link_template
-											.replace("{{svg-src}}", "../assets/app_icons/x.svg")
-											.replace("{{link-url}}",twitter)
-											.replace("{{website}}","twitter")
-					: "" ;
-			instagram ? links += link_template
-											.replace("{{svg-src}}", "../assets/app_icons/instagram.svg")
-											.replace("{{link-url}}",instagram)
-											.replace("{{website}}","instagram")
-					: "" ;
+
 			linkedin ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/linkedin.svg")
 											.replace("{{link-url}}",linkedin)
 											.replace("{{website}}","linkedin")
+					: "" ;
+			github ? links += link_template
+											.replace("{{svg-src}}", "../assets/app_icons/github.svg")
+											.replace("{{link-url}}",github)
+											.replace("{{website}}","github")
 					: "" ;
 			mastadon ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/mastadon.svg")
@@ -66,6 +65,16 @@ async function run() {
 											.replace("{{link-url}}",discord)
 											.replace("{{website}}","discord")
 					: "" ;
+			twitter ? links += link_template
+											.replace("{{svg-src}}", "../assets/app_icons/x.svg")
+											.replace("{{link-url}}",twitter)
+											.replace("{{website}}","twitter")
+					: "" ;
+			instagram ? links += link_template
+											.replace("{{svg-src}}", "../assets/app_icons/instagram.svg")
+											.replace("{{link-url}}",instagram)
+											.replace("{{website}}","instagram")
+					: "" ;
 			bluesky ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/blusky.svg")
 											.replace("{{link-url}}",bluesky)
@@ -81,27 +90,22 @@ async function run() {
 											.replace("{{link-url}}",youtube)
 											.replace("{{website}}","youtube")
 					: "" ;
-			github ? links += link_template
-											.replace("{{svg-src}}", "../assets/app_icons/github.svg")
-											.replace("{{link-url}}",github)
-											.replace("{{website}}","github")
-					: "" ;
 			website ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/website.svg")
 											.replace("{{link-url}}",website)
 											.replace("{{website}}","website")
 					: "" ;
 			
-
+			// at last generate the community card with the template
 			rendered += template
-								.replaceAll("{{community-name}}", name) // replace fields of template string with data
+								.replaceAll("{{community-name}}", name)
 								.replace("../assets/groups.svg", logo ? logo : "../assets/groups.svg")
-								.replaceAll("{{location}}", location)   // replaceAll for replacing the string within the title attr.
+								.replaceAll("{{location}}", location)
 								.replace("{{website}}", website)
 								.replace("{{links-container}}",links?links:"");
 		});
 	}
-	// renders this month events
+	// renders the communities section
 	communities_section.innerHTML = rendered;
 }
 
