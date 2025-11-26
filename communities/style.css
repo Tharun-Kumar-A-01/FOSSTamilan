@@ -83,6 +83,7 @@ a:visited {
 	height: fit-content;
 	width: 100%;
 	text-align: center;
+	padding: 0 32px;
 }
 
 @media (width<530px) {
@@ -92,37 +93,16 @@ a:visited {
 	}
 }
 
+@media(width<620px){
+	#navpath{
+		display:none;
+	}
+}
+
 @media (width<865px) {
 	#hero-title {
 		font-size: 2.3rem;
 	}
 }
 
-.communities {
-	min-height: fit-content;
-	padding-bottom: 3rem;
-	position: relative;
-}
 
-#communities-container {
-	padding-bottom: 80px;
-	max-width: 1495px;
-	width: 88%;
-	padding-left: 5%;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(430px, 430px));
-	gap: 24px;
-	justify-content: start;
-}
-
-.community-card {
-	width: 380px;
-	min-height: 260px;
-	border: var(--text) 2px solid;
-	padding: 22px;
-	position: relative;
-}
-
-.community-card:hover {
-	border-color: var(--primary);
-}

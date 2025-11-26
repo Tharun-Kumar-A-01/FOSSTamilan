@@ -29,6 +29,9 @@
     border: #444444 2px solid;
     padding: 22px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 .event-card:hover {
@@ -62,15 +65,23 @@
     max-width: 380px;
 }
 
-.event-date {
+.event-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.event-location {
     background: #acff2f28;
     padding: 3px 6px;
     width: fit-content;
     font-size: 1.2rem;
 	display: flex;
 	align-items: center;
+    margin: 0;
 }
 
+.event-date,
 .event-time {
     background: #272727;
     padding: 3px 6px;
@@ -78,7 +89,9 @@
     font-size: 1.2rem;
 	display: flex;
 	align-items: center;
+    margin: 0;
 }
+
 
 #date-icon,
 #time-icon {
@@ -94,6 +107,8 @@
 	flex-shrink: 0;
 	padding-right: 12px;
 	padding-left: 6px;
+    margin-top: 32px;
+
 }
 
 .location {

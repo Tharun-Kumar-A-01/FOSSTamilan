@@ -8,6 +8,9 @@ const past_events_template = `<div class="past event-card">
 					<p class="past event-community" title='{{community-name}}'>{{community-name}}</p>
 					<h1 class="past event-title">{{event-title}}</h1>
 					<div class="event-info">
+						<p class="event-location">
+							{{event-location}}
+						</p>
 						<p class="event-date">
 							<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" id="date-icon">
 								<path d="M580-240q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/>
@@ -25,7 +28,7 @@ const past_events_template = `<div class="past event-card">
 						<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" id="location-icon">
 							<path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/>
 						</svg>
-						<p class="location" title='{{event-location}}'>{{event-location}}</p>
+						<p class="location" title='{{event-venue}}'>{{event-venue}}</p>
 					</div>
 				</div>`;
 
@@ -45,13 +48,14 @@ async function run() {
 	if (past_events.length === 0) {
 		rendered = "<h1>Memory Corrupt! No history available</h1>";
 	} else {
-		past_events.map(({ communityName, eventName, eventVenue, eventDate, eventTime }) => {
+		past_events.map(({ communityName, eventName, location, eventVenue, eventDate, eventTime }) => {
 			rendered += past_events_template
 											.replaceAll("{{community-name}}", communityName)
 											.replace("{{event-title}}", eventName)
 											.replace("{{event-date}}", eventDate.split("-").reverse().join("-"))
 											.replace("{{event-time}}", eventTime)
-											.replaceAll("{{event-location}}", eventVenue);
+											.replaceAll("{{event-location}}", location)
+											.replaceAll("{{event-venue}}", eventVenue);
 											// no event-url here
 		});
 	}
