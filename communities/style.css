@@ -101,7 +101,8 @@ a:visited {
 
 @media (width<865px) {
 	#hero-title {
-		font-size: 2.3rem;
+		font-size: 2.2rem;
+		padding: 0 16px;
 	}
 }
 

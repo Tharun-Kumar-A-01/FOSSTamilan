@@ -39,46 +39,57 @@ async function run() {
 			twitter ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/x.svg")
 											.replace("{{link-url}}",twitter)
+											.replace("{{website}}","twitter")
 					: "" ;
 			instagram ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/instagram.svg")
 											.replace("{{link-url}}",instagram)
+											.replace("{{website}}","instagram")
 					: "" ;
 			linkedin ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/linkedin.svg")
 											.replace("{{link-url}}",linkedin)
+											.replace("{{website}}","linkedin")
 					: "" ;
 			mastadon ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/mastadon.svg")
 											.replace("{{link-url}}",mastadon)
+											.replace("{{website}}","mastadon")
 					: "" ;
 			reddit ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/reddit.svg")
 											.replace("{{link-url}}",reddit)
+											.replace("{{website}}","reddit")
 					: "" ;
 			discord ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/discord.svg")
 											.replace("{{link-url}}",discord)
+											.replace("{{website}}","discord")
 					: "" ;
 			bluesky ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/blusky.svg")
 											.replace("{{link-url}}",bluesky)
+											.replace("{{website}}","bluesky")
 					: "" ;
 			telegram ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/telegram.svg")
 											.replace("{{link-url}}",telegram)
+											.replace("{{website}}","telegram")
 					: "" ;
 			youtube ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/youtube.svg")
 											.replace("{{link-url}}",youtube)
+											.replace("{{website}}","youtube")
 					: "" ;
 			github ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/github.svg")
 											.replace("{{link-url}}",github)
+											.replace("{{website}}","github")
 					: "" ;
 			website ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/website.svg")
 											.replace("{{link-url}}",website)
+											.replace("{{website}}","website")
 					: "" ;
 			
 
