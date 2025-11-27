@@ -86,9 +86,9 @@ async function run() {
 	events.forEach((event) => {
 		let eventDate = new Date(event.eventDate);
 		let today = new Date();
-		if ( eventDate.getMonth() === today.getMonth() && eventDate.getDate() >= today.getDate() && eventDate.getFullYear() >= today.getFullYear() ) {
+		if ( eventDate.getMonth() === today.getMonth() && eventDate.getDate() >= today.getDate() && eventDate.getFullYear() === today.getFullYear() ) {
 			this_month.push(event);
-		} else if ( eventDate.getMonth() > today.getMonth() && eventDate.getFullYear() >= today.getFullYear() ) {
+		} else if ( (eventDate.getMonth() > today.getMonth() && eventDate.getFullYear() === today.getFullYear()) || eventDate.getFullYear() > today.getFullYear() ) {
 			upcoming.push(event);
 		} else {
 			past_events.push(event);

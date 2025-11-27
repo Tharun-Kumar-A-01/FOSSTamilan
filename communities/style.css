@@ -49,6 +49,10 @@ a:visited {
 	font-size: 1.4rem;
 }
 
+#navtitle a:hover {
+	color: var(--primary);
+}
+
 #navgitbtn {
 	height: fit-content;
 	padding: 8px 18px;

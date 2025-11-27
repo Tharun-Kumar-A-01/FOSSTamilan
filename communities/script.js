@@ -18,7 +18,7 @@ const template = `
 
 // template for each links in the card
 const link_template = `
-						<a class="link-box" href="{{link-url}}">
+						<a class="link-box" href="{{link-url}}" title="{{website}}">
 							<img src="{{svg-src}}" alt="{{website}}">
 						</a>`
 
@@ -43,57 +43,57 @@ async function run() {
 			linkedin ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/linkedin.svg")
 											.replace("{{link-url}}",linkedin)
-											.replace("{{website}}","linkedin")
+											.replaceAll("{{website}}","Linkedin")
 					: "" ;
 			github ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/github.svg")
 											.replace("{{link-url}}",github)
-											.replace("{{website}}","github")
+											.replaceAll("{{website}}","Github")
 					: "" ;
 			mastadon ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/mastadon.svg")
 											.replace("{{link-url}}",mastadon)
-											.replace("{{website}}","mastadon")
+											.replaceAll("{{website}}","Mastadon")
 					: "" ;
 			reddit ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/reddit.svg")
 											.replace("{{link-url}}",reddit)
-											.replace("{{website}}","reddit")
+											.replaceAll("{{website}}","Reddit")
 					: "" ;
 			discord ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/discord.svg")
 											.replace("{{link-url}}",discord)
-											.replace("{{website}}","discord")
+											.replaceAll("{{website}}","Discord")
 					: "" ;
 			twitter ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/x.svg")
 											.replace("{{link-url}}",twitter)
-											.replace("{{website}}","twitter")
+											.replaceAll("{{website}}","Twitter")
 					: "" ;
 			instagram ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/instagram.svg")
 											.replace("{{link-url}}",instagram)
-											.replace("{{website}}","instagram")
+											.replaceAll("{{website}}","Instagram")
 					: "" ;
 			bluesky ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/blusky.svg")
 											.replace("{{link-url}}",bluesky)
-											.replace("{{website}}","bluesky")
+											.replaceAll("{{website}}","Bluesky")
 					: "" ;
 			telegram ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/telegram.svg")
 											.replace("{{link-url}}",telegram)
-											.replace("{{website}}","telegram")
+											.replaceAll("{{website}}","Telegram")
 					: "" ;
 			youtube ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/youtube.svg")
 											.replace("{{link-url}}",youtube)
-											.replace("{{website}}","youtube")
+											.replaceAll("{{website}}","Youtube")
 					: "" ;
 			website ? links += link_template
 											.replace("{{svg-src}}", "../assets/app_icons/website.svg")
 											.replace("{{link-url}}",website)
-											.replace("{{website}}","website")
+											.replaceAll("{{website}}","Website")
 					: "" ;
 			
 			// at last generate the community card with the template

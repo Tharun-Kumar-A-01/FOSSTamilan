@@ -36,9 +36,29 @@ async function run() {
 
 	// this fetches past events from a different json
 	const past_events_response = await fetch("https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/pastevents.json");
-	let past_events = await past_events_response.json();
+	const events_response = await fetch("https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/events.json");
+	let events = await past_events_response.json();
+	let allevents = await events_response.json()
+	allevents.forEach((event)=>{
+		events.push(event);
+	})
 
-	past_events = past_events.slice(-6).sort((a, b) => {
+	let past_events = [];
+	events.forEach((event) => {
+		let eventDate = new Date(event.eventDate);
+		let today = new Date();
+		if ( eventDate.getMonth() === today.getMonth() && eventDate.getDate() >= today.getDate() && eventDate.getFullYear() === today.getFullYear() ) {
+			console.log(event);
+		} else if ( (eventDate.getMonth() > today.getMonth() && eventDate.getFullYear() === today.getFullYear()) || eventDate.getFullYear() > today.getFullYear() ) {
+			console.log(event);
+		} else {
+			past_events.push(event);
+		}
+	});
+
+	console.log(past_events)
+
+	past_events = past_events.sort((a, b) => {
 		const A = new Date(`${a.eventDate}`);
 		const B = new Date(`${b.eventDate}`);
 		return B - A;
