@@ -34,8 +34,8 @@ const past_events_template = `<div class="past event-card">
 
 async function run() {
 
-	// this fetches past events from a different json
 	const past_events_response = await fetch("https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/pastevents.json");
+	// this fetches past events from a different json
 	const events_response = await fetch("https://raw.githubusercontent.com/FOSSUChennai/Communities/refs/heads/main/src/data/events.json");
 	let events = await past_events_response.json();
 	let allevents = await events_response.json()

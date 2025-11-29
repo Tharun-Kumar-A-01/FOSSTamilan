@@ -3,10 +3,78 @@ let this_month_events_section = document.getElementById("this-month-events");
 let upcoming_events_section = document.getElementById("upcoming-events");
 let past_events_section = document.getElementById("past-events");
 
+// functionality for context menu
+let selected_card = null;
+let context_menu = document.getElementById("contextmenu");
+let save_btn = document.getElementById("save-as-image");
+let copy_btn = document.getElementById("copy-url");
+let open_in_newtab = document.getElementById("open-in-new-tab");
+
+// show context menu
+document.addEventListener("contextmenu", function (e) {
+	const card = e.target.closest(".event-card");
+	if (!card) return;
+
+	e.preventDefault();
+	selected_card = card;
+
+	// enable/disable button based on if URL is available or not
+	if (selected_card?.href) {
+		open_in_newtab.classList.remove("disabled");
+		copy_btn.classList.remove("disabled");
+	} else {
+		open_in_newtab.classList.add("disabled");
+		copy_btn.classList.add("disabled");
+	}
+
+	// sets contextmenu visibility and position
+	context_menu.style.display = "flex";
+	context_menu.style.left = e.pageX + "px";
+	context_menu.style.top = e.pageY + "px";
+});
+
+// hide menu on click
+document.addEventListener("click", function () {
+	context_menu.style.display = "none";
+});
+
+// save the event card as image
+// dont have any critical purpose, 
+// i just thought it would be cool to add this feature
+save_btn.onclick = function () {
+	if (!selected_card) return;
+
+	// this function will convert a html element into a canvas
+	// then we create a <a> tag with that to download it as image
+	// then click the link programmatically
+	html2canvas(selected_card).then(canvas => {
+		const link = document.createElement("a");
+		link.download = "event-card.png";
+		link.href = canvas.toDataURL();
+		link.click();
+	});
+};
+
+// this will copy the url of the event to clipboard
+copy_btn.onclick = function () {
+	if (!selected_card) return;
+	const url = selected_card?.href;
+
+	navigator.clipboard.writeText(url)
+};
+
+// this will open the link in new tab
+open_in_newtab.onclick = function () {
+	if (!selected_card) return;
+	const url = selected_card?.href;
+
+	window.open(url, "_blank");
+}
+
 // template string
 // used for rendering cards in a react component style
 // ( it will be used replace the placeholders {{...}} with actual data)
-const template = `<a href='{{event-url}}' class="event-card" target="_blank" rel="noopener noreferrer">
+const template = `<a href='{{event-url}}' class="event-card">
 					<p class="event-community" title='{{community-name}}'>{{community-name}}</p>
 					<h1 class="event-title">{{event-title}}</h1>
 					<div class="event-info">

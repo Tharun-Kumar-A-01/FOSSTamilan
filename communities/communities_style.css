@@ -21,6 +21,7 @@
 	border: #444444 2px solid;
 	padding: 22px;
 	position: relative;
+	background: var(--bg);
 }
 
 .community-card:hover {
@@ -75,7 +76,7 @@
 	justify-content: center;
 	width: 40px;
 	height: 40px;
-	background: #acff2f28;
+	border: 2px solid #acff2f28;
 }
 
 .link-box:hover{
@@ -84,8 +85,10 @@
 
 .links-container {
 	display: flex;
-	gap: 24px;
+	gap: 18px;
 	flex-wrap: wrap;
+	height: 70%;
+	align-content: start;
 }
 
 @media (width<512px) {
