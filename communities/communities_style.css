@@ -42,7 +42,7 @@
 }
 
 .location {
-	background: #acff2f28;
+	background: #7bee5e28;
 	padding: 6px 12px;
 	width: fit-content;
 	font-size: 1.2rem;
@@ -76,11 +76,11 @@
 	justify-content: center;
 	width: 40px;
 	height: 40px;
-	border: 2px solid #acff2f28;
+	border: 2px solid #7bee5e28;
 }
 
 .link-box:hover{
-	background: #acff2f41;
+	background: #7bee5e41;
 }
 
 .links-container {

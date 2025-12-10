@@ -1,6 +1,6 @@
 :root {
-    --primary: #adff2f;
-    --secondary: #628723;
+    --primary: #7bee5e;
+    --secondary: #77ca62;
     --foreground: #e2e2e2;
     --background: #0f0f0f;
     --fg: var(--foreground);
@@ -10,7 +10,7 @@
 }
 
 * {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Fira Code", monospace;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     padding: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Fira Code", monospace;
 }
 
 a {
@@ -35,19 +35,22 @@ a:visited {
     display: flex;
     flex-direction: row;
     width: calc(100% - 64px);
-    height: 64px;
+    /* height: 32px; */
     justify-content: space-between;
     align-items: center;
-    padding: 0 32px;
-    background: var(--bg);
-    position: fixed;
-    border-bottom: var(--disabled) 1px dashed;
+    margin: 32px ;
+    background: repeating-linear-gradient(90deg, transparent, transparent 6px, var(--primary) 6px, var(--primary) 8px);
     top: 0;
-    z-index: 3;
 }
 
 #navtitle {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
+    margin: 0;
+    background: var(--primary);
+    height: 100%;
+    color: var(--bg);
+    padding: 6px 6px;
+    font-weight: 600;
 }
 
 #navigation-box {
@@ -58,8 +61,8 @@ button {
     height: fit-content;
     padding: 8px 18px;
     background-color: var(--bg);
-    color: var(--text);
-    border: var(--text) 2px solid;
+    color: var(--primary);
+    border: var(--primary) 2px solid;
     cursor: pointer;
     text-transform: uppercase;
     font-size: 1rem;
@@ -69,14 +72,39 @@ button:hover {
     border-color: var(--primary);
     border-style: solid;
     color: var(--primary);
+    text-decoration: underline;
 }
 
+#breadcrumbs {
+    margin: 0 32px;
+    font-size: 0.9rem;
+    padding-bottom: 8px;
+    color: var(--primary);
+    display: flex;
+    flex-direction: row;
+}
+
+#breadcrumbs a {
+    color: var(--primary);
+}
+#breadcrumbs p {
+    margin: 0;
+    color: var(--primary);
+}
+#breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+
 .hero {
-    padding-top: 70px;
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100vh;
+}
+
+#navgitbtn {
+    padding: 5px 12px;
 }
 
 #left-side {
@@ -117,6 +145,7 @@ button:hover {
     font-size: 3.6rem;
     margin-top: 0;
 }
+
 #contextmenu {
     position: absolute;
     display: none;
@@ -196,8 +225,8 @@ button:hover {
     }
 
     #navbar {
-        padding: 0 22px;
         width: calc(100% - 44px);
+        margin: 22px 22px;
     }
 
 }
@@ -212,7 +241,7 @@ button:hover {
         display: flex;
         flex-direction: row;
         width: 100%;
-        top:65px;
+        top:0;
         position: sticky;
         justify-content: space-around;
         background: var(--bg);
